@@ -3,7 +3,7 @@ services:
   #Creates a genesis state for the beacon chain using a YAML configuration file and
   # a deterministic set of 64 validators.
   create-beacon-chain-genesis:
-    image: "gcr.io/prysmaticlabs/prysm/cmd/prysmctl@sha256:016b6d7f5d8c8790efb07d058c3d15de90b53580824c02b1d12a80d60d81d687"
+    image: "gcr.io/prysmaticlabs/prysm/cmd/prysmctl@sha256:996a359ba32a1e4b3b5f0b6a4dddce45b6ab7c79b5c54927d85ad8ffce94376f"
     command:
       - testnet
       - generate-genesis
