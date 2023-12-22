@@ -15,7 +15,7 @@
 		"londonBlock": 0,
 		"arrowGlacierBlock": 0,
 		"grayGlacierBlock": 0,
-		"shanghaiTime": 1694706437,
+		"shanghaiTime": 1703176223,
 		"terminalTotalDifficulty": 0,
 		"terminalTotalDifficultyPassed": true,
 		"clique": {
@@ -24,7 +24,7 @@
 		}
 	},
 	"nonce": "0x0",
-	"timestamp": "0x65032a75",
+	"timestamp": "0x6584678f",
 	"extraData": "0x0000000000000000000000000000000000000000000000000000000000000000123463a4b065722e99115d6c222f267d9cabb5240000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
 	"gasLimit": "0x1c9c380",
 	"difficulty": "0x1",

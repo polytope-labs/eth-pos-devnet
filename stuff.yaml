@@ -1,0 +1,20 @@
+version: v0
+template:
+  name: local
+  block-number: latest
+  visibility: TEAM
+  network-id: 32382
+  execution:
+    chain-config:
+      chain-id: 32382
+    block-gas-limit: 10000000
+    base-fee-per-gas: 1000000000
+
+  contracts:
+    - address: 0x4e59b44847b379578588920ca78fbf26c0b4956c
+      bytecode: 0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3
+      balance: 100
+
+  balances:
+    - address: 0x123463a4b065722e99115d6c222f267d9cabb524
+      amount: 10000000000000000000
