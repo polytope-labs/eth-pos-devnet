@@ -7,7 +7,7 @@ services:
     command:
       - testnet
       - generate-genesis
-      - --fork=capella
+      - --fork=deneb
       - --num-validators=64
       - --output-ssz=/consensus/genesis.ssz
       - --chain-config-file=/consensus/config.yml
@@ -68,7 +68,7 @@ services:
   # The account used in go-ethereum is set as the suggested fee recipient for transactions
   # proposed via the validators attached to the beacon node.
   beacon-chain:
-    image: "gcr.io/prysmaticlabs/prysm/beacon-chain@sha256:0049038ad72cfcacf7227dae501c8a3fc1d7667bae4826e011853b82b807dd4d"
+    image: "prysmaticlabs/prysm-beacon-chain:v4.2.1"
     command:
       - --datadir=/consensus/beacondata
       # No peers to sync with in this testnet, so setting to 0
@@ -103,7 +103,7 @@ services:
   # We run a validator client with 64, deterministically-generated keys that match
   # The validator keys present in the beacon chain genesis state generated a few steps above.
   validator:
-    image: "gcr.io/prysmaticlabs/prysm/validator@sha256:1359274e46e2f5f3b59e792f6a3a3c2f49478d511038690760128f52460c1f9c"
+    image: "prysmaticlabs/prysm-validator:v4.2.1"
     command:
       - --beacon-rpc-provider=beacon-chain:4000
       - --datadir=/consensus/validatordata
