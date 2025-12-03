@@ -3,11 +3,11 @@ services:
   #Creates a genesis state for the beacon chain using a YAML configuration file and
   # a deterministic set of 64 validators.
   create-beacon-chain-genesis:
-    image: "gcr.io/prysmaticlabs/prysm/cmd/prysmctl@sha256:59a6a387b33f5ade1e064810af5b168eec6cc00ea3ca05873f3658f93d18da44"
+    image: "gcr.io/prysmaticlabs/prysm/cmd/prysmctl@sha256:98b9a1a579ae782a8df37675dfc9b35602a053d0b1bb7d343546ab53f7d84975"
     command:
       - testnet
       - generate-genesis
-      - --fork=deneb
+      - --fork=electra
       - --num-validators=64
       - --output-ssz=/consensus/genesis.ssz
       - --chain-config-file=/consensus/config.yml
@@ -19,7 +19,7 @@ services:
 
   # Sets up the genesis configuration for the go-ethereum client from a JSON file.
   geth-genesis:
-    image: "ethereum/client-go:v1.13.11"
+    image: "ethereum/client-go:v1.15.0"
     command: --datadir=/execution init /execution/genesis.json
     volumes:
       - ./execution:/execution
@@ -31,7 +31,7 @@ services:
   # Runs the go-ethereum execution client with the specified, unlocked account and necessary
   # APIs to allow for proof-of-stake consensus via Prysm.
   geth:
-    image: "ethereum/client-go:v1.13.11"
+    image: "ethereum/client-go:v1.15.0"
     command:
       - --http
       - --http.api=eth,net,web3
@@ -68,7 +68,7 @@ services:
   # The account used in go-ethereum is set as the suggested fee recipient for transactions
   # proposed via the validators attached to the beacon node.
   beacon-chain:
-    image: "prysmaticlabs/prysm-beacon-chain:v4.2.1"
+    image: "prysmaticlabs/prysm-beacon-chain:v5.3.0"
     command:
       - --datadir=/consensus/beacondata
       # No peers to sync with in this testnet, so setting to 0
@@ -103,7 +103,7 @@ services:
   # We run a validator client with 64, deterministically-generated keys that match
   # The validator keys present in the beacon chain genesis state generated a few steps above.
   validator:
-    image: "prysmaticlabs/prysm-validator:v4.2.1"
+    image: "prysmaticlabs/prysm-validator:v5.3.0"
     command:
       - --beacon-rpc-provider=beacon-chain:4000
       - --datadir=/consensus/validatordata
